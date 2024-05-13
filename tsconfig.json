@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es2017", // 您之前提到喜欢使用ES2017
+        "module": "commonjs",
+        "outDir": "./dist",
+        "strict": true,
+        "esModuleInterop": true,
+        "declaration": true,
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ],
+        }
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}
