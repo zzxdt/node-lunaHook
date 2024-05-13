@@ -2,10 +2,10 @@
 ### 👀 lunaHook for nodejs
 > <a href="https://github.com/HIllya51/LunaHook" style="color:#00CDCD">LunaTextractor</a> is an open-source x86/x64 text hooker for Windows support almost visual novel games
 ### 👓 Requirements
-> * ✅ LunaHook ver 3.2.1
->
->
-> * ✅ Need files include
+ * ✅ LunaHook ver 3.2.1
+
+ * ✅ Need files include
+ 
 ```
 LunaHost64.dll
 LunaHost32.dll
@@ -13,7 +13,11 @@ LunaHook64.dll
 LunaHook32.dll
 LunaHostCLI64.exe / LunaHostCLI32.exe
 ```
+
 ### 📜 Example
+```
+npm i lunahook
+```
 ```
 import LunaHookTextractor from "lunaHook";
 //process pid
