@@ -40,65 +40,51 @@ textractor.attach(PID)
 ```
 ### 🔑 API
 ---
-#### LunaHookTextractor(path: string)
-
+### 💡 LunaHookTextractor(path: string)
 The constructor.  
-#### Params  
-> * `Path` to LunaHostCLI64/32.exe
+##### Params  
+&nbsp;&nbsp; `Path` to LunaHostCLI64/32.exe
+##### start(): void
+&nbsp;&nbsp; Start LunaHook process.
 
-#### start(): void
-> Start LunaHook process.
-#### attach(pid: number): void
-> Attach text hooker to a specific process.
-#### Params
-> * `pid` - Process ID
+### 💡 attach (pid: number): void
+ Attach text hooker to a specific process.
+##### Params
+ &nbsp;&nbsp;`pid` - Process ID
+##### Throws
+ &nbsp;&nbsp;RangeError if pid is invalid  
 
-#### Throws
->* RangeError if pid is invalid
->* ReferenceError if Textractor process is not started
+ &nbsp;&nbsp;ReferenceError if Textractor process is not started
+### 💡 detach(pid: number): void
+Detach text hooker to a specific process.
+##### Params
+&nbsp;&nbsp;`pid` - Process ID
 
-#### detach(pid: number): void
-> Detach text hooker to a specific process.
->
->**Params**  
->
->* `pid` - Process ID
->
->**Throws**
->* ReferenceError if the process has not been attached
->
-#### hook(pid: number, code: string): void
-> Inject a hook into a specific process.
->
-> Supports /H hook code and /R read code.  
->
->**Params**  
->* `pid` - Process ID
->
->**Throws**
->* ReferenceError if LunaHook process is not started
->* ReferenceError if the process has not been attached
->* SyntaxError if code is invalid
-#### on(event: "output", listener: (output: TextOutputObject) => void): this
-> Specify callback function when text outputs.
->
->**Params**
->
->* `event`  - Must be "output"
->
->*  `listener` - The callback function
-#### exec(command: string): void
-> Execute a command manually.
->
->**Params**
->
->* `command` - The command to execute
->
->**Throws**
->
->* ReferenceError if LunaHook process is not started
->
-#### stop(): void
->Stop LunaHook process.
+##### Throws
+&nbsp;&nbsp; ReferenceError if the process has not been attached
+
+### 💡 hook(pid: number, code: string): void
+ Inject a hook into a specific process.
+ Supports /H hook code and /R read code.  
+##### Params  
+&nbsp;&nbsp; `pid` - Process ID
+##### Throws
+ &nbsp;&nbsp;ReferenceError if LunaHook process is not started  
+ &nbsp;&nbsp;ReferenceError if the process has not been attached  
+ &nbsp;&nbsp;SyntaxError if code is invalid
+
+### 🔋 on(event: "output", listener: (output: TextOutputObject) => void): this
+Specify callback function when text outputs.
+##### Params
+&nbsp;&nbsp;`event`  - Must be "output"  
+&nbsp;&nbsp;`listener` - The callback function
+### 💡 exec(command: string): void
+&nbsp;&nbsp; Execute a command manually.
+##### Params
+&nbsp;&nbsp;`command` - The command to execute
+##### Throws
+&nbsp;&nbsp;ReferenceError if LunaHook process is not started
+### 💡 stop(): void
+&nbsp;&nbsp;Stop LunaHook process.
 ### 🚪 License
->MIT
+## MIT
