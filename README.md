@@ -15,9 +15,10 @@ LunaHostCLI64.exe / LunaHostCLI32.exe
 ```
 ### 📜 Example
 ```
-import LunaHookTextractor from "./yuji";
+import LunaHookTextractor from "lunaHook";
 //process pid
 const PID = 16064
+//need the path of LunaHostCLI64.exe
 let textractor = new LunaHookTextractor('../unaTextractor/LunaHostCLI64.exe');
 textractor.on('output', output => {
     console.log(`[${output.handle}]: ${output.text}`)
