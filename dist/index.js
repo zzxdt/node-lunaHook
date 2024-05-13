@@ -1,9 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = require("path");
 const child_process_1 = require("child_process");
 const events_1 = require("events");
-const scanf = require('scanf');
+const scanf_1 = __importDefault(require("scanf"));
 const Split = require('split');
 class LunaHookTextractor extends events_1.EventEmitter {
     constructor(path) {
@@ -20,7 +23,7 @@ class LunaHookTextractor extends events_1.EventEmitter {
             code: "",
             text: ""
         };
-        this.path = (0, path_1.resolve)(__dirname, '..', path);
+        this.path = (0, path_1.resolve)(__dirname, path);
         this.splitStream = Split();
         this.splitStream.on("data", this.onData.bind(this));
     }
@@ -61,7 +64,7 @@ class LunaHookTextractor extends events_1.EventEmitter {
     // Supports __/H__ hook code and __/R__ read code.
     hook(pid, code) {
         if (!this.process) {
-            throw new ReferenceError("Textractor not started");
+            throw new ReferenceError("LunaTextractor not started");
         }
         this.ensureProcessAttached(pid);
         if (!code.includes("/H") && !code.includes("/R")) {
@@ -97,8 +100,10 @@ class LunaHookTextractor extends events_1.EventEmitter {
         if (line.startsWith("Usage")) {
             return;
         }
+        // Handle multiple lines
         if (line.startsWith("[")) {
-            this.textOutputObject = scanf.sscanf(line, "[%x:%x:%x:%x:%x:%s:%s] %S", "handle", "pid", "addr", "ctx", "ctx2", "name", "code", "text");
+            this.textOutputObject = scanf_1.default.sscanf(line, "[%x:%x:%x:%x:%x:%s:%s] %S", "handle", "pid", "addr", "ctx", "ctx2", "name", "code", "text");
+            // In case of hook code doesn't exist
             if (this.textOutputObject.name.endsWith(']')) {
                 this.textOutputObject.name = this.textOutputObject.name.slice(0, -1);
                 this.textOutputObject.text = this.textOutputObject.code;
@@ -106,7 +111,7 @@ class LunaHookTextractor extends events_1.EventEmitter {
             }
         }
         else {
-            const text = scanf.sscanf(line, "%S");
+            const text = scanf_1.default.sscanf(line, "%S");
             this.textOutputObject.text += text;
         }
         if (this.textOutputObject.text === null) {

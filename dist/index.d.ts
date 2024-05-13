@@ -27,6 +27,6 @@ export default class LunaHookTextractor extends EventEmitter {
     stop(): void;
     private ensurePidValid;
     private ensureProcessAttached;
-    private onData;
+    onData(line: string): void;
 }
 export {};
