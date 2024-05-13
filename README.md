@@ -6,15 +6,15 @@
 >
 >
 > * ✅ Need files include
->```
+```
 LunaHost64.dll
 LunaHost32.dll
 LunaHook64.dll
 LunaHook32.dll
 LunaHostCLI64.exe / LunaHostCLI32.exe
->```
+```
 ### 📜 Example
-> ```
+```
 import LunaHookTextractor from "./yuji";
 //process pid
 const PID = 16064
@@ -24,7 +24,7 @@ textractor.on('output', output => {
 })
 textractor.start()
 textractor.attach(PID)
->```
+```
 #### ✏️ TextOutputObject
 ```
 {
